@@ -6,9 +6,11 @@
   "dependencies": {
     "bunyan": "^1.8.1",
     "bunyan-format": "^0.2.1",
-    "koa": "^1.2.1"
+    "koa": "^1.2.1",
+    "pm2": "^1.1.3"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "launch": "pm2 start index.js"
   }
 }

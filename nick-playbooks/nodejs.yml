@@ -6,6 +6,7 @@
     shell: yum info nodejs
     ignore_errors: yes
     register: nodejs_available_output
+    become: true
 
   - name: prepare to install nodejs
     # Normally, it's a bad idea to curl and pipe directly into bash, but:
@@ -14,6 +15,20 @@
     # recommended approach on the Nodejs site.
     shell: curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
     when: nodejs_available_output.rc != 0
+    become: true
 
   - name: install nodejs
     yum: name=nodejs
+    become: true
+
+  - name: deploy app
+    # Checking out this repo on the remote node... INCEPTION!
+    git: repo=https://github.com/NickHeiner/ansible-hacking.git dest=/srv/ansible-hacking
+
+  - name: install app
+    chdir: /srv/ansible-hacking/nodejs-app
+    shell: npm install --production-only
+
+  - name: launch app
+    chdir: /srv/ansible-hacking/nodejs-app
+    shell: npm run launch
