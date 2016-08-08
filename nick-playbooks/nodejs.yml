@@ -1,0 +1,6 @@
+---
+- hosts: nodejs
+  remote_user: root
+  tasks:
+  - name: install nodejs
+    yum: name=httpd state=latest
