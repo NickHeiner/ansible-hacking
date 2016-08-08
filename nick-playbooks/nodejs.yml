@@ -2,5 +2,11 @@
 - hosts: nodejs
   remote_user: root
   tasks:
+  - name: prepare to install nodejs
+    # Normally, it's a bad idea to curl and pipe directly into bash, but:
+    # http://imgur.com/a/iOW5P
+    # We may also be able to use the yum_repository task, but this is the 
+    # recommended approach on the Nodejs site.
+    shell: curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
   - name: install nodejs
-    yum: name=httpd state=latest
+    yum: name=nodejs

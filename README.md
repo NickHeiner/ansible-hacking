@@ -15,4 +15,7 @@ ansible-playbook -i hosts ansible-examples/jboss-standalone/site.yml --become
 
 # Deploy a specific WAR to the server
 ansible-playbook -i hosts ansible-examples/jboss-standalone/deploy-application.yml --become
+
+# Set up NodeJS
+ansible-playbook -i hosts nick-playbooks/nodejs.yml --become
 ``` 

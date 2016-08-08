@@ -1,2 +1,2 @@
 jboss ansible_host=54.175.36.140 ansible_user=ec2-user
-nodejs ansible_host=52.91.166.252 ansible_user=ec2-user
+nodejs ansible_host=54.174.81.164 ansible_user=ec2-user
